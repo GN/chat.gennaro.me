@@ -1,7 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
+import io from "socket.io-client";
 
 function MessageFeed(props) {
-    const [oldMessages, setOldMessages] = useState([]);
+    const [messages, setMessages] = useState([]);
+
+    const socket = io('//localhost:5000');
+    socket.on('recieve', function (data) {
+        setMessages(messages.concat(<p className='card-text' key={messages.length}>{data}</p>));
+    });
+
 
     return (
         <div className="card border-secondary mb-3 flex-grow-1 rounded-0">
@@ -10,7 +17,7 @@ function MessageFeed(props) {
                 <div className="card-body d-flex flex-shrink-0">
                     <div className='card-text '>
                         <div className="position-absolute">
-                            {props.messages}
+                            {messages}
                         </div>
                     </div>
                 </div>
