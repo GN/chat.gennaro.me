@@ -28,11 +28,11 @@ io.on('connection', function(socket) {
     console.log('a user connected');
 
     socket.on('ip', function (data) {
-        console.log(data + " sent a message");
+        console.log(data);
     });
     socket.on('send', function (data) {
-        console.log(data);
-        io.emit('recieve', data);
+        //console.log(data);
+        io.emit('receive', data);
 
 
         if (data === "exit") {
@@ -40,6 +40,7 @@ io.on('connection', function(socket) {
         }
 
     });
+
 });
 
 

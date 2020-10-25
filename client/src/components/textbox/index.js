@@ -1,20 +1,12 @@
 import React, {useState} from 'react';
-import io from 'socket.io-client';
-import axios from 'axios';
 
-function TextBox(){
+function TextBox(props){
     const[message, setMessage] = useState();
 
     const emitMessage = (m) => {
-        const socket = io('//localhost:5000');
-        axios.get('https://www.cloudflare.com/cdn-cgi/trace').then( function (res) {
-            socket.emit('ip', res.data.split("ip=")[1].split("\n")[0]);
-            socket.emit('send', m);
-            setMessage("");
-            console.log(res.data.split("ip=")[1].split("\n")[0]);
-        }).catch(function (err) {
-            console.log(err);
-        });
+        props.socket.emit('ip', props.ip + " sent: " + m);
+        props.socket.emit('send', m);
+        setMessage('');
     };
 
     return(

@@ -1,14 +1,23 @@
-import React, {useState} from "react";
-import io from "socket.io-client";
+import React, {useEffect, useState} from "react";
 
 function MessageFeed(props) {
     const [messages, setMessages] = useState([]);
 
-    const socket = io('//localhost:5000');
-    socket.on('recieve', function (data) {
-        setMessages(messages.concat(<p className='card-text' key={messages.length}>{data}</p>));
-    });
+    useEffect(() => {
+        const handle = (message) => {setMessages(messages.concat(<tr key={messages.length}><td>{message}</td></tr>))}
 
+        // props.socket.on('receive', function(message){
+        //     setMessages(messages.concat(<p className='card-text' key={messages.length}>{message}</p>));
+        // });
+        // return()=>{
+        //     props.socket.on('receive', function(message){
+        //         setMessages(messages.concat(<p className='card-text' key={messages.length}>{message}</p>));
+        //     });
+        // }
+        props.socket.on('receive', handle);
+        return () => {props.socket.off('receive', handle);}
+
+    },[messages]);
 
     return (
         <div className="card border-secondary mb-3 flex-grow-1 rounded-0">
@@ -17,7 +26,12 @@ function MessageFeed(props) {
                 <div className="card-body d-flex flex-shrink-0">
                     <div className='card-text '>
                         <div className="position-absolute">
-                            {messages}
+                            <table>
+                                <tbody>
+                                {messages}
+                                </tbody>
+                            </table>
+
                         </div>
                     </div>
                 </div>
