@@ -9,3 +9,10 @@ body{
     /*min-height: 100vh;*/
 }
 
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 768px) {
+    .small-cards {
+        margin: 0rem !important;
+    }
+
+}

@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import './../../index.css';
 
 function MessageFeed(props) {
     const [messages, setMessages] = useState([]);

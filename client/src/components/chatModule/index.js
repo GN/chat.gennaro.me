@@ -3,6 +3,7 @@ import MessageFeed from "../messagefeed";
 import TextBox from "../textbox";
 import io from "socket.io-client";
 import axios from "axios";
+import './../../index.css';
 
 function ChatModule() {
     const [ip, setIp] = useState();
@@ -19,8 +20,8 @@ function ChatModule() {
 
     if (socket !== null) {
         return (
-            <div className={'card m-5 h-100 flex-grow-1 rounded-0'}>
-                <div className={'card m-5 h-100 flex-grow-1 rounded-0 border-0'}>
+            <div className={'card small-cards m-5 h-100 flex-grow-1 rounded-0'}>
+                <div className={'card small-cards m-5 h-100 flex-grow-1 rounded-0 border-0'}>
                     <MessageFeed socket={socket}/>
                     <TextBox socket={socket} ip={ip}/>
                 </div>
