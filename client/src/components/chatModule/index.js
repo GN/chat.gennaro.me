@@ -14,7 +14,7 @@ function ChatModule() {
         }).catch(function (err) {
             console.log(err);
         });
-        setSocket(io('/socket'));
+        setSocket(io());
     }, []);
 
     if (socket !== null) {
