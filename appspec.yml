@@ -2,10 +2,14 @@ version: 0.0
 os: linux
 files:
   - source: /client
-    destination: /var/www/chat/
+    destination: /var/www/chat/client
     
 hooks:
   BeforeInstall:
-    - location: scripts/client_build.sh
+    - location: scripts/client_before_install.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: scripts/client_after_install.sh
       timeout: 300
       runas: root
