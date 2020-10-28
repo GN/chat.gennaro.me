@@ -12,7 +12,6 @@ body{
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (max-width: 768px) {
     .small-cards {
-        margin: 0rem !important;
+        margin: 0 !important;
     }
-
 }
