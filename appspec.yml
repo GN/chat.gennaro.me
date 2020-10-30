@@ -3,13 +3,32 @@ os: linux
 files:
   - source: /client
     destination: /var/www/chat/client
+  - source: /server
+    destination: /var/www/chat/server
     
 hooks:
   BeforeInstall:
     - location: scripts/client_before_install.sh
       timeout: 300
       runas: root
+    - location: scripts/server_before_install.sh
+      timeout: 300
+      runas: root
+      
   AfterInstall:
     - location: scripts/client_after_install.sh
+      timeout: 300
+      runas: root
+    - location: scripts/server_after_install.sh
+      timeout: 300
+      runas: root
+      
+  ApplicationStop:
+    - location: scripts/server_stop.sh
+      timeout: 300
+      runas: root
+      
+  ApplicationStart: 
+    - location: scripts/server_start.sh
       timeout: 300
       runas: root
