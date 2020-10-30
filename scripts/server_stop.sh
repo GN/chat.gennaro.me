@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo pm2 delete 'chat'
+pm2 delete 'chat'
