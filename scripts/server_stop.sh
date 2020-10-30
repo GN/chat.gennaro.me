@@ -1,2 +1,3 @@
 #!/bin/bash
-pm2 delete 'chat'
+pm2 delete --silent 'chat'
+
