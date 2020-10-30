@@ -17,13 +17,19 @@ function MessageFeed(props) {
         //     });
         // }
         const handle = (message) => {
-            setMessages(messages.concat(<tr key={messages.length}><td>{message}</td></tr>));
-            tableRef.current.scrollTop = tableRef.current.scrollHeight;
+            if (message.message !== '') {
+                setMessages(messages.concat(<tr key={messages.length}>
+                    <td>{message.screenName + ':'} &nbsp;&nbsp; {message.message}</td>
+                </tr>));
+                tableRef.current.scrollTop = tableRef.current.scrollHeight;
+            }
         }
         props.socket.on('receive', handle);
-        return () => {props.socket.off('receive', handle);}
+        return () => {
+            props.socket.off('receive', handle);
+        }
 
-    },[messages, props.socket]);
+    }, [messages, props.socket]);
 
     return (
         <div className="card border-secondary mb-3 flex-grow-1 rounded-0">

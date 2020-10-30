@@ -22,6 +22,7 @@ function ChatModule() {
         return (
             <div className={'card small-cards m-5 h-100 flex-grow-1 rounded-0'}>
                 <div className={'card small-cards m-5 h-100 flex-grow-1 rounded-0 border-0'}>
+
                     <MessageFeed socket={socket}/>
                     <TextBox socket={socket} ip={ip}/>
                 </div>

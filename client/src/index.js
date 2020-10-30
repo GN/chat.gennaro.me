@@ -5,11 +5,11 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
       <div className="d-flex flex-column min-vh-100">
         <App />
-      </div>
-  </React.StrictMode>,
+      </div>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 

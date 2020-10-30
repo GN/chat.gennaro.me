@@ -1,16 +1,23 @@
 import React from 'react';
+import {Navbar} from 'react-bootstrap';
+import UsernameModal from "../usernameModal";
 
 
 function Header() {
 
     return(
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a className="navbar-brand" href="/#">GennChat</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
-                    aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon" />
-            </button>
-        </nav>
+        <>
+            <Navbar bg="dark" expand="lg" variant="dark">
+                <Navbar.Brand href="#home">GennChat</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <div className="btn-toolbar flex-grow-1 justify-content-end">
+                        <UsernameModal />
+                    </div>
+                </Navbar.Collapse>
+            </Navbar>
+        </>
+
     );
 }
 
